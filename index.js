@@ -29,22 +29,27 @@ class Book {
   
       list.appendChild(row);
     }
-    static deleteBook(el){
-        if(el.classList.contains('delete'))
-        {
-            el.parentElement.parentElement.remove(
-
-            );
-        }
+  
+    static deleteBook(el) {
+      if(el.classList.contains('delete')) {
+        el.parentElement.parentElement.remove();
+      }
     }
-    static showAlert(message, className)
-    {
-        const div = document.createElement('div');
-        div.className = 'alert alert-${className}';
-        div.appendChild(document.createTextNode(message));
-        const container = document.querySelector('.container');
-        const form = document.querySelector('#book-form');
-        container.insertBefore(div, from);
-
+  
+    static showAlert(message, className) {
+      const div = document.createElement('div');
+      div.className = `alert alert-${className}`;
+      div.appendChild(document.createTextNode(message));
+      const container = document.querySelector('.container');
+      const form = document.querySelector('#book-form');
+      container.insertBefore(div, form);
+  
+      // Vanish in 3 seconds
+      setTimeout(() => document.querySelector('.alert').remove(), 3000);
     }
-}
+    static clearFeilds() {
+        document.querySelector('#title').value = '';
+        document.querySelector('#author').value = '';
+        document.querySelector('#isbn').value = '';
+    }
+  }  
